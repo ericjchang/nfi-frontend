@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { hooks, metaMask } from '../connectors/metamask';
 import { walletShorten } from '../helpers/formatter';
 
@@ -9,6 +9,8 @@ const Home = () => {
   const account = useAccounts();
   const isActive = useIsActive();
   const isActivating = useIsActivating();
+
+  const [showFullAddress, setShowFullAddress] = useState(false);
 
   useEffect(() => {
     void metaMask.connectEagerly().catch(() => {
@@ -32,12 +34,19 @@ const Home = () => {
     }
   };
 
+  const updateShowFullAddress = () => {
+    const _showFullAddress = showFullAddress;
+    setShowFullAddress(!_showFullAddress);
+  };
+
   return (
     <>
       <div className="content">
         {isActive ? (
           <>
-            <p>{walletShorten(account.toString())}</p>
+            <p onClick={updateShowFullAddress}>
+              {showFullAddress ? account.toString() : walletShorten(account.toString())}
+            </p>
             <p>ChainId - {chainId}</p>
           </>
         ) : null}
