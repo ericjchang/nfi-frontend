@@ -1,5 +1,6 @@
-import React from 'react';
 import './App.css';
+import React from 'react';
+import Home from './components/Home';
 import Web3Provider from './Web3Provider';
 
 function App() {
@@ -7,7 +8,7 @@ function App() {
     <>
       <Web3Provider />
       <div className="App">
-        <p>Content</p>
+        <Home />
       </div>
     </>
   );

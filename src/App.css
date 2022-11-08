@@ -1,38 +1,80 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+body {
+  margin: 0;
+  padding: 0;
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  width: 100vw;
+  height: 100vh;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
+  background-color: #162434;
+  color: #fff;
 }
 
-.App-link {
-  color: #61dafb;
+.content {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  font-weight: 500;
 }
 
-@keyframes App-logo-spin {
+button {
+  padding: 10px;
+  background-color: #00b2ff;
+  border: none;
+  color: #fff;
+  font-weight: 500;
+  font-size: 15px;
+  border-radius: 10px;
+}
+
+.orb {
+  position: absolute;
+  width: 250px;
+  height: 250px;
+  background: linear-gradient(#00ff00, #00ff00, #00ff00);
+  border-radius: 50%;
+  animation: animate 10s linear infinite;
+  z-index: -1;
+}
+
+@keyframes animate {
   from {
-    transform: rotate(0deg);
+    transform: translate(-50%, -50%) rotate(0deg);
   }
   to {
-    transform: rotate(360deg);
+    transform: translate(-50%, -50%) rotate(360deg);
   }
+}
+.orb:after {
+  content: '';
+  position: absolute;
+  top: 25px;
+  left: 25px;
+  bottom: 25px;
+  right: 25px;
+  border-radius: 50%;
+  background-color: #162434;
+}
+
+.orb span {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(#00b2ff, #00ffbb, #6bff6b);
+  border-radius: 50%;
+}
+
+.orb span:nth-child(1) {
+  filter: blur(5px);
+}
+.orb span:nth-child(2) {
+  filter: blur(10px);
+}
+.orb span:nth-child(3) {
+  filter: blur(20px);
+}
+.orb span:nth-child(4) {
+  filter: blur(55px);
 }
